@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orfoepia/screen1.dart';
-import 'package:orfoepia/sush.dart';
+import 'package:orfoepia/screen/screen1.dart';
+import 'package:orfoepia/screen/sush.dart';
 import 'package:flutter/cupertino.dart';
 import "dart:math";
 

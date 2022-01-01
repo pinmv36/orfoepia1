@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:orfoepia/screen1.dart';
-import 'package:orfoepia/sush.dart';
+import 'package:orfoepia/screen/screen1.dart';
+import 'package:orfoepia/screen/sush.dart';
 import 'package:flutter/cupertino.dart';
 import "dart:math";
-
-import 'Podsk.dart';
-
+import 'screen/Podsk.dart';
+var rng = new Random();
 //главная
 void main() {runApp(MaterialApp(
     initialRoute: '/',
@@ -15,8 +14,12 @@ void main() {runApp(MaterialApp(
       '/podsk':(BuildContext context)=>Podsk(),
 
 
-}
-));
+},),);
+
+    for (var i = 0; i < 10; i++) {
+      (rng.nextInt(49));
+    print(rng);}
+
 }
 
 

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:orfoepia/sush.dart';
+import 'package:orfoepia/screen/sush.dart';
 import "dart:math";
 
 import 'Podsk.dart';
-import 'main.dart';
+import '../main.dart';
 
 //первый экран запуска
 class Screen_1 extends StatefulWidget {

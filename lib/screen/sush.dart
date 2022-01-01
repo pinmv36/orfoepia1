@@ -3,9 +3,13 @@ import "dart:math";
 import 'package:flutter/material.dart';
 
 import 'Podsk.dart';
-import 'main.dart';
+import '../main.dart';
+/*
 var a=['аэропОрты', 'бАнты', 'бОроду', 'бухгАлтеров', 'вероисповЕдание', 'граждАнство', 'дефИс', 'диспансЕр', 'договорЁнность', 'докумЕнт', 'досУг', 'жалюзИ', 'знАчимость', 'каталОг', 'диалОг', 'монолОг', 'некролОг', 'квартАл', 'корЫсть', 'крАны', 'лЕкторы', 'лЕкторов', 'мЕстностей', 'пОчестей', 'чЕлюстей', 'новостЕй', 'намЕрение', 'недУг', 'нОвости',  'овостЕй', 'мЕстностей', 'нОготь', 'нОгтя', 'Отрочество', 'портфЕль', 'пОручни', 'свЁкла', 'сирОты', 'срЕдства', 'созЫв', 'тамОжня','тОрты', 'тОртов', 'цепОчка', 'шАрфы', 'бАнты', 'шофЁр', 'киоскЁр', 'контролЁр', 'экспЕрт'];
 var b=['аэропОрты', 'бАнты', 'бОроду', 'бухгАлтеров', 'вероисповЕдание', 'граждАнство', 'дефИс', 'диспансЕр', 'договорЁнность', 'докумЕнт', 'досУг', 'жалюзИ', 'знАчимость', 'каталОг', 'диалОг', 'монолОг', 'некролОг', 'квартАл', 'корЫсть', 'крАны', 'лЕкторы', 'лЕкторов', 'мЕстностей', 'пОчестей', 'чЕлюстей', 'новостЕй', 'намЕрение', 'недУг', 'нОвости',  'овостЕй', 'мЕстностей', 'нОготь', 'нОгтя', 'Отрочество', 'портфЕль', 'пОручни', 'свЁкла', 'сирОты', 'срЕдства', 'созЫв', 'тамОжня','тОрты', 'тОртов', 'цепОчка', 'шАрфы', 'бАнты', 'шофЁр', 'киоскЁр', 'контролЁр', 'экспЕрт'];
+*/
+final List<String> a=<String>['аэропОрты', 'бАнты', 'бОроду', 'бухгАлтеров', 'вероисповЕдание', 'граждАнство', 'дефИс', 'диспансЕр', 'договорЁнность', 'докумЕнт', 'досУг', 'жалюзИ', 'знАчимость', 'каталОг', 'диалОг', 'монолОг', 'некролОг', 'квартАл', 'корЫсть', 'крАны', 'лЕкторы', 'лЕкторов', 'мЕстностей', 'пОчестей', 'чЕлюстей', 'новостЕй', 'намЕрение', 'недУг', 'нОвости',  'овостЕй', 'мЕстностей', 'нОготь', 'нОгтя', 'Отрочество', 'портфЕль', 'пОручни', 'свЁкла', 'сирОты', 'срЕдства', 'созЫв', 'тамОжня','тОрты', 'тОртов', 'цепОчка', 'шАрфы', 'бАнты', 'шофЁр', 'киоскЁр', 'контролЁр', 'экспЕрт'];
+
 var r=Random(49);
 String wor = '';
 int val1=-1;
@@ -14,7 +18,43 @@ bool value=false;
 bool val=false;
 int count=0;
 int rnd=0;
-Random random = new Random();int randomNumber = random.nextInt(49);
+Random random = new Random();
+//int randomNumber = random.nextInt(49);
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex=0;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(0.0,150.0,0.0,0.0),
+
+      itemCount:a.length,
+      itemBuilder: (BuildContext context,int index){
+        return ListTile(
+          //height: 50,
+          title:Text(' ${a[index]}',textAlign: TextAlign.center,style: TextStyle(
+            fontSize: 20.0,//размер
+          ),),
+          selected: index==_selectedIndex,
+          onTap: (){
+            setState((){
+              _selectedIndex=index;
+            });
+          },
+        );
+
+      },
+    );
+  }
+}
+
 
 //существительные
 class Sush extends StatefulWidget {
@@ -25,6 +65,7 @@ class Sush extends StatefulWidget {
 }
 
 class _SushState extends State<Sush> {
+  int _selectedIndex=0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,6 +84,7 @@ class _SushState extends State<Sush> {
             ]
         ),
         body:
+
         Container (
           decoration: const BoxDecoration(
             image:DecorationImage(
@@ -50,13 +92,24 @@ class _SushState extends State<Sush> {
               fit:BoxFit.fill,
             ),),
           //width:double.infinity,
-          child: Column(
+
+          child:MyStatefulWidget(),)));}}
+
+
+
+          /*child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
+
+
+
+
+
+
+          /*Padding(
                 padding:EdgeInsets.symmetric(horizontal: 60.0),
                 child: RadioListTile(
-                  title:  Text(a[randomNumber],style:const TextStyle(fontSize:20.0) ,),
+                  title:  Text(a[4],style:const TextStyle(fontSize:20.0) ,),
                   value: 1,
                   groupValue: val1,
                   onChanged: (value) {
@@ -69,7 +122,7 @@ class _SushState extends State<Sush> {
               Padding(
                 padding:EdgeInsets.symmetric(horizontal: 60.0),
                 child: RadioListTile(
-                  title:  Text(a[randomNumber],style:const TextStyle(fontSize:20.0) ,),
+                  title:  Text(b[4],style:const TextStyle(fontSize:20.0) ,),
                   value: 2,
                   groupValue: val1,
                   onChanged: (value) {
@@ -78,7 +131,7 @@ class _SushState extends State<Sush> {
                     });
                   },
                   activeColor:Colors.blue,),
-              ),
+              ),*/
 
 
             ],
@@ -90,4 +143,4 @@ class _SushState extends State<Sush> {
 
 
   }
-}
+}*/
