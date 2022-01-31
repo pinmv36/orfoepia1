@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:orfoepia/screen/prich.dart';
+import 'package:orfoepia/screen/pril.dart';
+import 'package:orfoepia/screen/prodv.dart';
 import 'package:orfoepia/screen/sush.dart';
 import "dart:math";
 
 import 'Podsk.dart';
 import '../main.dart';
-
+import 'deepr.dart';
+import 'glag.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 //первый экран запуска
 class Screen_1 extends StatefulWidget {
   const Screen_1({Key? key}) : super(key: key);
@@ -18,11 +23,10 @@ class _Screen_1State extends State<Screen_1> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData.dark(),
         home: Scaffold(
             appBar:AppBar(title: const Text("Часть речи"),
                 actions:[
-                  IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon (Icons.arrow_back_ios)),
-                  IconButton(onPressed: (){}, icon: Icon (Icons.school)),
                   TextButton(
                     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)  =>Podsk()));},
                     child: const Text("Подсказка"),style: ButtonStyle(
@@ -67,27 +71,30 @@ class _Screen_1State extends State<Screen_1> {
                       ListTile(
                         leading: const Icon(Icons.filter_2),
                         title:const Text('Прилагательные'),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)  =>Pril()));
+                        },
                       ),
                       ListTile(
                         leading: const Icon(Icons.filter_3),
                         title:const Text('Причастия'),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)  =>Prich()));
+                        },
                       ),
                       ListTile(
                         leading: const Icon(Icons.filter_4),
                         title:const Text('Глаголы'),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)  =>Glag()));
+                        },
                       ),
                       ListTile(
                         leading: const Icon(Icons.filter_5),
-                        title:const Text('Деепричастия'),
-                        onTap: (){},
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.filter_6),
-                        title:const Text('Наречия'),
-                        onTap: (){},
+                        title:const Text('Деепричастия и наречия'),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)  =>Deepry()));
+                        },
                       ),
                       const Divider(height: 80,thickness: 5,),
                       const Text("  Продвинутый уровень",
@@ -96,9 +103,11 @@ class _Screen_1State extends State<Screen_1> {
                         ),),
                       const Divider(),
                       ListTile(
-                        leading: const Icon(Icons.filter_7),
+                        leading: const Icon(Icons.filter_6),
                         title:const Text('Все части речи'),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)  =>Prodv()));
+                        },
                       ),
                     ]
                 )
@@ -115,26 +124,29 @@ class _Screen_1State extends State<Screen_1> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    children:[
-                      const Expanded(flex:1,child:Text(''),),
-                      const Expanded(flex:4,child: Text('Орфоэпическая норма — \nэто единственно возможный или предпочитаемый вариант правильного произношения слова',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16.0,//размер
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),),
-                      const Expanded(flex:1,child:Text(''),),
-                    ],
+                  Container(
+                child: SizedBox(
+                  width: 250.0,
+                  child: DefaultTextStyle(
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                      fontFamily:'Agne',
+                    ),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText('Орфоэпическая норма — это единственно возможный или предпочитаемый вариант правильного произношения слова.'),
+                        TyperAnimatedText('В языковедении существуют понятия литературного и разговорного языков. Художественные произведения, статьи в СМИ, новостные передачи радио- и телепрограмм, переписка и общение интеллигентных образованных людей — это место «обитания» литературного языка. Его основой является орфоэпия и её нормы.'),
+                      ],
+                      onTap: (){},
+                    ),
                   ),
-                ],
+                ),
+              ),
+              ],
+            ),
               ),
             )
-        )
-
-
-    );
+        );
   }
 }
 
